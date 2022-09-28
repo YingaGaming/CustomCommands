@@ -18,7 +18,10 @@ public class CommandListener implements Listener {
         config.getConfigurationSection("commands").getKeys(false).forEach(key -> {
             if (event.getMessage().toLowerCase().startsWith("/" + key)) {
                 event.setCancelled(true);
-                event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', config.getString("commands." + key)));
+                config.getStringList("commands." + key).forEach(message -> {
+                    event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', message));
+                });
+                
             }
         });
 

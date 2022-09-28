@@ -1,2 +1,4 @@
 commands:
-  plugins: "Hello there!"
+  plugins:
+    - "Hello there!"
+    - "Multi-Line compatible"
