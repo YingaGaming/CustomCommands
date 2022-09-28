@@ -16,7 +16,7 @@ public class CommandListener implements Listener {
         FileConfiguration config = Main.getConfiguration();
 
         config.getConfigurationSection("commands").getKeys(false).forEach(key -> {
-            if (event.getMessage().toLowerCase().startsWith("/" + key)) {
+            if (event.getMessage().toLowerCase().split(" ")[0].equals("/" + key)) {
                 event.setCancelled(true);
                 config.getStringList("commands." + key).forEach(message -> {
                     event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', message));
